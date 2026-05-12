@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Прана — студия осознанной йоги и mindfulness. Групповые и индивидуальные занятия, медитации, дыхательные практики, онлайн-классы."
+    />
+    <title>Прана — студия йоги</title>
+    <style>
+:root{
+  --cream:#F5F0E8;
+  --sage:#7C9A7E;
+  --sage-2:#B8CEB9;
+  --green:#2D4A2E;
+  --terracotta:#C4714A;
+  --ink:#1E2A1F;
+  --line: color-mix(in oklab, var(--green) 18%, transparent);
+  --shadow: 0 18px 50px color-mix(in oklab, var(--green) 18%, transparent);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --container: 1100px;
+}
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background: radial-gradient(1000px 520px at 18% 12%, color-mix(in oklab, var(--sage-2) 60%, transparent), transparent 60%),
+              radial-gradient(900px 540px at 85% 18%, color-mix(in oklab, var(--terracotta) 25%, transparent), transparent 62%),
+              var(--cream);
+  color: var(--ink);
+  font-family: Calibri, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a{ color:inherit; text-decoration:none; }
+strong{ color: var(--green); }
+
+.container{
+  width:min(var(--container), calc(100% - 40px));
+  margin:0 auto;
+}
+
+.skip-link{
+  position:absolute;
+  left:-9999px;
+  top:10px;
+  background:var(--green);
+  color:var(--cream);
+  padding:10px 12px;
+  border-radius:10px;
+}
+.skip-link:focus{ left:10px; z-index:1000; }
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--cream) 70%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+.header__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 14px 0;
+  gap: 14px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand__mark{
+  width:40px; height:40px;
+  display:grid; place-items:center;
+  border-radius: 14px;
+  background: linear-gradient(145deg, color-mix(in oklab, var(--sage) 82%, white), var(--sage));
+  color: var(--cream);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  box-shadow: 0 10px 24px color-mix(in oklab, var(--sage) 35%, transparent);
+}
+.brand__text{ display:flex; flex-direction:column; line-height:1.05; }
+.brand__name{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight:700;
+  letter-spacing:.2px;
+  color: var(--green);
+  font-size: 18px;
+}
+.brand__tag{
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--green) 65%, var(--sage));
+}
+.brand--footer .brand__mark{ width:44px; height:44px; }
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+}
+.nav__link{
+  padding: 10px 10px;
+  border-radius: 12px;
+  color: color-mix(in oklab, var(--green) 86%, var(--ink));
+}
+.nav__link:hover{
+  background: color-mix(in oklab, var(--sage-2) 35%, transparent);
+}
+
+.menu-btn{
+  display:none;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 75%, transparent);
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--green);
+  font-weight: 700;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  cursor:pointer;
+  font-weight: 700;
+  transition: transform .08s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn--sm{ padding: 10px 12px; border-radius: 12px; }
+.btn--primary{
+  background: linear-gradient(135deg, var(--terracotta), color-mix(in oklab, var(--terracotta) 70%, var(--sage)));
+  color: #fff;
+  border-color: color-mix(in oklab, var(--terracotta) 45%, var(--green));
+  box-shadow: 0 16px 40px color-mix(in oklab, var(--terracotta) 25%, transparent);
+}
+.btn--primary:hover{ background: linear-gradient(135deg, color-mix(in oklab, var(--terracotta) 88%, white), var(--terracotta)); }
+.btn--ghost{
+  background: color-mix(in oklab, var(--cream) 65%, transparent);
+}
+.btn--ghost:hover{ background: color-mix(in oklab, var(--sage-2) 28%, transparent); }
+
+.hero{
+  padding: 56px 0 22px;
+}
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 28px;
+  align-items: center;
+}
+.kicker{
+  display:inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 65%, transparent);
+  color: color-mix(in oklab, var(--green) 70%, var(--sage));
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.h1{
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--green);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 14px 0 12px;
+  font-size: clamp(34px, 3.6vw, 48px);
+}
+.lead{
+  margin: 0 0 18px;
+  font-size: 17px;
+  color: color-mix(in oklab, var(--ink) 75%, var(--green));
+}
+.hero__cta{ display:flex; gap: 12px; flex-wrap: wrap; }
+
+.chips{
+  margin: 16px 0 0;
+  padding: 0;
+  list-style:none;
+  display:flex;
+  gap:10px;
+  flex-wrap: wrap;
+}
+.chip{
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 75%, transparent);
+  color: color-mix(in oklab, var(--green) 78%, var(--ink));
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.hero__visual{
+  position:relative;
+  min-height: 360px;
+}
+.orb{
+  position:absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: .9;
+}
+.orb--sage{
+  left: -10px;
+  top: 20px;
+  background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--sage-2) 78%, white), var(--sage));
+  box-shadow: 0 24px 70px color-mix(in oklab, var(--sage) 32%, transparent);
+}
+.orb--terracotta{
+  right: -6px;
+  top: 80px;
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--terracotta) 70%, white), var(--terracotta));
+  box-shadow: 0 22px 70px color-mix(in oklab, var(--terracotta) 20%, transparent);
+}
+
+.section{
+  padding: 46px 0;
+}
+.section--alt{
+  background: linear-gradient(180deg, color-mix(in oklab, var(--cream) 70%, transparent), color-mix(in oklab, var(--sage-2) 20%, transparent));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.section__head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.h2{
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--green);
+  font-size: 32px;
+  margin:0;
+}
+.h3{
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--green);
+  font-size: 20px;
+  margin:0 0 8px;
+}
+.h3--sm{ font-size: 18px; }
+.muted{
+  margin:0;
+  color: color-mix(in oklab, var(--ink) 65%, var(--green));
+}
+.small{ font-size: 13px; }
+
+.grid{
+  display:grid;
+  gap: 14px;
+}
+.grid--3{ grid-template-columns: repeat(3, 1fr); }
+.grid--2{ grid-template-columns: repeat(2, 1fr); }
+
+.card{
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 78%, transparent);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.card--glass{
+  background: color-mix(in oklab, var(--cream) 55%, transparent);
+  backdrop-filter: blur(10px);
+}
+.card__title{
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.card__link{
+  display:inline-block;
+  margin-top: 12px;
+  color: color-mix(in oklab, var(--green) 70%, var(--terracotta));
+  font-weight: 800;
+}
+.card__link:hover{ text-decoration: underline; }
+
+.list{
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: color-mix(in oklab, var(--ink) 75%, var(--green));
+}
+.divider{
+  height:1px;
+  background: var(--line);
+  margin: 14px 0;
+}
+
+.mini-schedule{ display:grid; gap: 10px; }
+.mini-schedule__row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: color-mix(in oklab, var(--cream) 74%, transparent);
+}
+.mini-schedule__time{ font-weight: 900; color: var(--green); }
+.mini-schedule__name{ color: color-mix(in oklab, var(--ink) 72%, var(--green)); }
+
+.tabs{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.tab{
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 68%, transparent);
+  border-radius: 999px;
+  padding: 10px 12px;
+  cursor:pointer;
+  font-weight: 800;
+  color: var(--green);
+}
+.tab.is-active{
+  background: color-mix(in oklab, var(--sage-2) 44%, transparent);
+  border-color: color-mix(in oklab, var(--sage) 35%, var(--green));
+}
+
+.schedule{
+  display:grid;
+  gap: 10px;
+}
+.slot{
+  display:grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 12px;
+  align-items:center;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 75%, transparent);
+}
+.slot__time{ font-weight: 900; color: var(--green); }
+.slot__name{ font-weight: 800; }
+.slot__meta{ color: color-mix(in oklab, var(--ink) 62%, var(--green)); font-size: 13px; }
+
+.note{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--sage-2) 26%, transparent);
+}
+
+.card--price{
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+.price__top{ flex:1; }
+.price{
+  margin: 6px 0 0;
+  font-weight: 900;
+  color: var(--green);
+  font-size: 28px;
+}
+.card--featured{
+  position:relative;
+  border-color: color-mix(in oklab, var(--terracotta) 45%, var(--green));
+}
+.badge{
+  position:absolute;
+  top: 14px;
+  right: 14px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--terracotta) 90%, white);
+  color: white;
+  font-weight: 900;
+  font-size: 12px;
+  border: 1px solid color-mix(in oklab, var(--terracotta) 60%, var(--green));
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+.ph{
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  min-height: 92px;
+  background:
+    radial-gradient(120px 90px at 25% 35%, color-mix(in oklab, var(--sage-2) 60%, transparent), transparent 60%),
+    radial-gradient(140px 120px at 75% 55%, color-mix(in oklab, var(--terracotta) 22%, transparent), transparent 70%),
+    linear-gradient(135deg, color-mix(in oklab, var(--cream) 75%, transparent), color-mix(in oklab, var(--sage-2) 20%, transparent));
+}
+.ph--2{ min-height: 140px; }
+.ph--3{ min-height: 140px; }
+
+.form{ display:grid; gap: 12px; }
+.field{ display:grid; gap: 6px; }
+.field__label{ font-weight: 800; color: var(--green); }
+.input{
+  width:100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 82%, transparent);
+  color: var(--ink);
+  outline: none;
+}
+.input:focus{
+  border-color: color-mix(in oklab, var(--sage) 55%, var(--green));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--sage-2) 40%, transparent);
+}
+.form__actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.toast{
+  margin-top: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--sage-2) 38%, transparent);
+  color: var(--green);
+  font-weight: 800;
+}
+
+.map{
+  height: 210px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(240px 160px at 40% 45%, color-mix(in oklab, var(--sage-2) 60%, transparent), transparent 60%),
+    radial-gradient(200px 160px at 70% 55%, color-mix(in oklab, var(--terracotta) 20%, transparent), transparent 65%),
+    linear-gradient(135deg, color-mix(in oklab, var(--cream) 72%, transparent), color-mix(in oklab, var(--sage-2) 18%, transparent));
+}
+.actions-row{ display:flex; gap: 10px; flex-wrap: wrap; }
+
+.footer{ padding: 10px 0 0; }
+.footer__grid{
+  display:grid;
+  grid-template-columns: 1.2fr .9fr .9fr;
+  gap: 14px;
+  padding-bottom: 16px;
+}
+.footer__bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding: 14px 0 26px;
+  flex-wrap: wrap;
+}
+.social{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.social__link{
+  padding: 9px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--cream) 70%, transparent);
+  font-weight: 800;
+}
+.social__link:hover{ background: color-mix(in oklab, var(--sage-2) 28%, transparent); }
+
+@media (max-width: 980px){
+  .hero__grid{ grid-template-columns: 1fr; }
+  .hero__visual{ min-height: 320px; }
+  .grid--3{ grid-template-columns: 1fr; }
+  .grid--2{ grid-template-columns: 1fr; }
+  .footer__grid{ grid-template-columns: 1fr; }
+  .nav{ display:none; }
+  .menu-btn{ display:inline-flex; }
+  .nav.is-open{
+    display:flex;
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 64px;
+    padding: 12px 20px 18px;
+    background: color-mix(in oklab, var(--cream) 78%, transparent);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .btn{ transition:none; }
+}
+
+
+    </style>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%232D4A2E' d='M32 10c8 7 12 14 12 21 0 10-7 18-12 23-5-5-12-13-12-23 0-7 4-14 12-21Z'/%3E%3Cpath fill='%237C9A7E' d='M32 18c5 5 7 10 7 14 0 7-4 12-7 15-3-3-7-8-7-15 0-4 2-9 7-14Z'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Перейти к содержанию</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <a class="brand" href="#top" aria-label="Прана — на главную">
+          <span class="brand__mark" aria-hidden="true">П</span>
+          <span class="brand__text">
+            <span class="brand__name">Прана</span>
+            <span class="brand__tag">студия йоги</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav__link" href="#classes">Занятия</a>
+          <a class="nav__link" href="#schedule">Расписание</a>
+          <a class="nav__link" href="#about">О нас</a>
+          <a class="nav__link" href="#contact">Контакты</a>
+          <a class="btn btn--primary btn--sm" href="#book">Записаться</a>
+        </nav>
+
+        <button class="menu-btn" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <span aria-hidden="true">Меню</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="top">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="kicker">Осознанная йога · mindfulness · дыхание</p>
+            <h1 class="h1">Найди баланс — мягко, осознанно, по‑твоему</h1>
+            <p class="lead">
+              «Прана» — небольшая уютная студия (2–3 зала), где йога, медитация и дыхательные техники
+              соединяются в спокойную и поддерживающую практику.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="#book">Записаться на пробное</a>
+              <a class="btn btn--ghost" href="#classes">Выбрать занятие</a>
+            </div>
+            <ul class="chips" aria-label="Преимущества">
+              <li class="chip">45–60 минут</li>
+              <li class="chip">Онлайн‑запись</li>
+              <li class="chip">Сертифицированные инструкторы</li>
+              <li class="chip">Натуральные материалы</li>
+            </ul>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="orb orb--sage"></div>
+            <div class="orb orb--terracotta"></div>
+            <div class="card card--glass">
+              <div class="card__title">Сегодня в расписании</div>
+              <div class="mini-schedule" id="miniSchedule">
+                <div class="mini-schedule__row">
+                  <div class="mini-schedule__time">18:30</div>
+                  <div class="mini-schedule__name">Мягкая хатха</div>
+                </div>
+                <div class="mini-schedule__row">
+                  <div class="mini-schedule__time">19:45</div>
+                  <div class="mini-schedule__name">Дыхание + медитация</div>
+                </div>
+                <div class="mini-schedule__row">
+                  <div class="mini-schedule__time">20:30</div>
+                  <div class="mini-schedule__name">Инь‑йога</div>
+                </div>
+              </div>
+              <a class="card__link" href="#schedule">Смотреть полное расписание</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="classes">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Занятия</h2>
+            <p class="muted">Для начинающих и продвинутых. Безопасно, с вниманием к телу и дыханию.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card">
+              <h3 class="h3">Хатха (мягкая)</h3>
+              <p class="muted">Опора на базовые позы, выравнивание и расслабление. Идеально для старта и восстановления.</p>
+              <ul class="list">
+                <li>60 минут</li>
+                <li>Уровень: любой</li>
+                <li>Фокус: спина и мобильность</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Виньяса</h3>
+              <p class="muted">Динамичная связка движения и дыхания. Помогает перезагрузиться после рабочего дня.</p>
+              <ul class="list">
+                <li>45–60 минут</li>
+                <li>Уровень: средний</li>
+                <li>Фокус: сила и выносливость</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Инь‑йога</h3>
+              <p class="muted">Глубокое расслабление, длительные мягкие удержания поз. Снимает стресс и напряжение.</p>
+              <ul class="list">
+                <li>60 минут</li>
+                <li>Уровень: любой</li>
+                <li>Фокус: нервная система</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Медитация</h3>
+              <p class="muted">Практика внимания и тишины внутри. Подходит, если хочется ясности и спокойствия.</p>
+              <ul class="list">
+                <li>30–45 минут</li>
+                <li>Уровень: любой</li>
+                <li>Фокус: mindfulness</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Дыхательные практики</h3>
+              <p class="muted">Мягкие техники дыхания для концентрации, энергии и снижения тревожности.</p>
+              <ul class="list">
+                <li>30–45 минут</li>
+                <li>Уровень: любой</li>
+                <li>Фокус: стресс‑менеджмент</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3 class="h3">Индивидуально</h3>
+              <p class="muted">Персональный план под запрос: спина, гибкость, восстановление, техника и безопасность.</p>
+              <ul class="list">
+                <li>60 минут</li>
+                <li>1‑на‑1</li>
+                <li>Фокус: индивидуальный запрос</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="schedule">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Расписание</h2>
+            <p class="muted">Утренние и вечерние окна, суббота и онлайн‑классы.</p>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Расписание по дням">
+            <button class="tab is-active" type="button" role="tab" aria-selected="true" data-day="mon">Пн</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-day="wed">Ср</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-day="fri">Пт</button>
+            <button class="tab" type="button" role="tab" aria-selected="false" data-day="sat">Сб</button>
+          </div>
+
+          <div class="schedule" id="scheduleTable" aria-live="polite"></div>
+
+          <div class="note">
+            <strong>Важно:</strong> на первом занятии инструктор подскажет безопасные варианты и адаптацию под ваши
+            особенности.
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pricing">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Абонементы</h2>
+            <p class="muted">Разовое посещение и абонементы на 8 и 16 занятий.</p>
+          </div>
+
+          <div class="grid grid--3">
+            <article class="card card--price">
+              <div class="price__top">
+                <h3 class="h3">Разовое</h3>
+                <p class="price">1 200 ₽</p>
+                <p class="muted">Подходит, чтобы познакомиться со студией.</p>
+              </div>
+              <a class="btn btn--ghost" href="#book">Записаться</a>
+            </article>
+
+            <article class="card card--price card--featured">
+              <div class="badge" aria-label="Популярно">Популярно</div>
+              <div class="price__top">
+                <h3 class="h3">8 занятий</h3>
+                <p class="price">7 200 ₽</p>
+                <p class="muted">Оптимально для регулярности 2 раза в неделю.</p>
+              </div>
+              <a class="btn btn--primary" href="#book">Оставить заявку</a>
+            </article>
+
+            <article class="card card--price">
+              <div class="price__top">
+                <h3 class="h3">16 занятий</h3>
+                <p class="price">12 800 ₽</p>
+                <p class="muted">Для тех, кто хочет результат и привычку.</p>
+              </div>
+              <a class="btn btn--ghost" href="#book">Оставить заявку</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="about">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">О студии</h2>
+            <p class="muted">
+              Мы объединяем практики йоги, медитации и дыхания в тёплой атмосфере с натуральными материалами и
+              вниманием к каждому.
+            </p>
+          </div>
+
+          <div class="grid grid--2">
+            <div class="card">
+              <h3 class="h3">Миссия</h3>
+              <p>
+                Помочь людям найти внутренний баланс, укрепить тело и снизить стресс через практику йоги и осознанного
+                движения.
+              </p>
+              <div class="divider"></div>
+              <h3 class="h3">Принципы</h3>
+              <ul class="list">
+                <li><strong>Натуральность:</strong> бережный подход к материалам и пространству</li>
+                <li><strong>Персонализация:</strong> адаптация практики под вас</li>
+                <li><strong>Безопасность:</strong> сертифицированные инструкторы</li>
+                <li><strong>Осознанность:</strong> mindfulness в каждом занятии</li>
+                <li><strong>Сообщество:</strong> поддержка и тепло</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 class="h3">Атмосфера</h3>
+              <p class="muted">Естественный свет, спокойные тона и уютные залы.</p>
+              <div class="photo-grid" aria-hidden="true">
+                <div class="ph ph--1"></div>
+                <div class="ph ph--2"></div>
+                <div class="ph ph--3"></div>
+                <div class="ph ph--4"></div>
+              </div>
+              <p class="muted">Студия оформлена в спокойной палитре: шалфей, тёмно‑зелёный, терракота и тёплый кремовый.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="book">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2">Запись</h2>
+            <p class="muted">Оставьте контакт — мы предложим удобное время и подходящий формат (студия или онлайн).</p>
+          </div>
+
+          <div class="grid grid--2">
+            <form class="card form" id="bookingForm">
+              <label class="field">
+                <span class="field__label">Имя</span>
+                <input class="input" name="name" autocomplete="name" required placeholder="Например, Анна" />
+              </label>
+              <label class="field">
+                <span class="field__label">Телефон или Telegram</span>
+                <input class="input" name="contact" required placeholder="+7… или @username" />
+              </label>
+              <label class="field">
+                <span class="field__label">Формат</span>
+                <select class="input" name="format">
+                  <option value="studio">В студии</option>
+                  <option value="online">Онлайн</option>
+                  <option value="individual">Индивидуально</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Комментарий (необязательно)</span>
+                <textarea class="input" name="comment" rows="4" placeholder="Например: есть запрос по спине"></textarea>
+              </label>
+
+              <div class="form__actions">
+                <button class="btn btn--primary" type="submit">Отправить</button>
+                <p class="muted small" id="formHint">
+                  После нажатия «Отправить» текст заявки скопируется в буфер — его можно вставить в мессенджер или письмо.
+                </p>
+              </div>
+              <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+            </form>
+
+            <div class="card">
+              <h3 class="h3">Где мы находимся</h3>
+              <p class="muted">Центр города · 2–3 зала · тёплый свет · дерево · растения</p>
+              <div class="map" role="img" aria-label="Схема расположения студии"></div>
+              <div class="divider"></div>
+              <ul class="list">
+                <li><strong>Адрес:</strong> уточняется при записи</li>
+                <li><strong>Время:</strong> 07:30–22:00</li>
+                <li><strong>Телефон:</strong> +7 (999) 123‑45‑67</li>
+                <li><strong>Сайт:</strong> prana‑yoga.ru</li>
+              </ul>
+              <div class="actions-row">
+                <a class="btn btn--ghost" href="#contact">Контакты</a>
+                <a class="btn btn--ghost" href="#pricing">Цены</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="contact">
+        <div class="container footer">
+          <div class="footer__grid">
+            <div>
+              <div class="brand brand--footer">
+                <span class="brand__mark" aria-hidden="true">П</span>
+                <span class="brand__text">
+                  <span class="brand__name">Прана</span>
+                  <span class="brand__tag">студия йоги</span>
+                </span>
+              </div>
+              <p class="muted">
+                Осознанная практика йоги для каждого. Тепло, тишина, дыхание и движение — без спешки.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="h3 h3--sm">Контакты</h3>
+              <ul class="list">
+                <li><strong>Телефон:</strong> +7 (999) 123‑45‑67</li>
+                <li><strong>Telegram:</strong> @prana_yoga</li>
+                <li><strong>Email:</strong> hello@prana‑yoga.ru</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="h3 h3--sm">Соцсети</h3>
+              <div class="social">
+                <a class="social__link" href="#" aria-label="Instagram">Instagram</a>
+                <a class="social__link" href="#" aria-label="ВКонтакте">VK</a>
+                <a class="social__link" href="#" aria-label="YouTube">YouTube</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer__bottom">
+            <p class="muted small">© <span id="year"></span> Прана · Студия йоги</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+const scheduleData = {
+  mon: [
+    { time: "07:45", name: "Мягкая хатха", meta: "60 мин · уровень любой" },
+    { time: "18:30", name: "Виньяса (антистресс)", meta: "45–60 мин · средний" },
+    { time: "19:45", name: "Дыхание + медитация", meta: "40 мин · уровень любой" },
+  ],
+  wed: [
+    { time: "08:15", name: "Инь‑йога", meta: "60 мин · уровень любой" },
+    { time: "18:30", name: "Хатха (спина)", meta: "60 мин · уровень любой" },
+    { time: "20:00", name: "Медитация", meta: "30–40 мин · уровень любой" },
+  ],
+  fri: [
+    { time: "07:45", name: "Виньяса (мягко)", meta: "45 мин · средний" },
+    { time: "18:30", name: "Инь‑йога", meta: "60 мин · уровень любой" },
+    { time: "19:45", name: "Йога‑нидра", meta: "45 мин · восстановление" },
+  ],
+  sat: [
+    { time: "10:30", name: "Хатха (основа)", meta: "60 мин · начинающим" },
+    { time: "12:00", name: "Пранаяма", meta: "40 мин · дыхание" },
+    { time: "13:00", name: "Группа для спины", meta: "60 мин · бережно" },
+  ],
+};
+
+function qs(sel) {
+  const el = document.querySelector(sel);
+  if (!el) throw new Error(`Missing element: ${sel}`);
+  return el;
+}
+
+function renderSchedule(dayKey) {
+  const mount = qs("#scheduleTable");
+  const rows = scheduleData[dayKey] || [];
+  mount.innerHTML = rows
+    .map(
+      (r) => `
+      <div class="slot">
+        <div class="slot__time">${escapeHtml(r.time)}</div>
+        <div>
+          <div class="slot__name">${escapeHtml(r.name)}</div>
+          <div class="slot__meta">${escapeHtml(r.meta)}</div>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="#book" aria-label="Записаться на ${escapeAttr(r.name)} в ${escapeAttr(r.time)}">Записаться</a>
+      </div>
+    `,
+    )
+    .join("");
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttr(s) {
+  return escapeHtml(s).replaceAll("`", "&#096;");
+}
+
+function setupTabs() {
+  const tabs = Array.from(document.querySelectorAll(".tab"));
+  if (!tabs.length) return;
+
+  function activate(tab) {
+    for (const t of tabs) {
+      const isActive = t === tab;
+      t.classList.toggle("is-active", isActive);
+      t.setAttribute("aria-selected", isActive ? "true" : "false");
+    }
+    renderSchedule(tab.dataset.day);
+  }
+
+  for (const tab of tabs) {
+    tab.addEventListener("click", () => activate(tab));
+  }
+
+  activate(tabs[0]);
+}
+
+function setupMenu() {
+  const btn = document.querySelector(".menu-btn");
+  const nav = document.querySelector(".nav");
+  if (!btn || !nav) return;
+
+  function setOpen(open) {
+    nav.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  btn.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
+
+  for (const link of nav.querySelectorAll("a")) {
+    link.addEventListener("click", () => setOpen(false));
+  }
+}
+
+function setupForm() {
+  const form = document.querySelector("#bookingForm");
+  const toast = document.querySelector("#toast");
+  if (!form || !toast) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const payload = {
+      name: (data.get("name") || "").toString().trim(),
+      contact: (data.get("contact") || "").toString().trim(),
+      format: (data.get("format") || "").toString().trim(),
+      comment: (data.get("comment") || "").toString().trim(),
+      ts: new Date().toISOString(),
+      source: "prana-yoga-site",
+    };
+
+    const text =
+      `Заявка «Прана»\n` +
+      `Имя: ${payload.name}\n` +
+      `Контакт: ${payload.contact}\n` +
+      `Формат: ${payload.format}\n` +
+      `Комментарий: ${payload.comment || "—"}\n` +
+      `Время: ${payload.ts}\n`;
+
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast(toast, "Готово: текст заявки скопирован в буфер обмена.");
+    } catch {
+      showToast(toast, "Скопируйте текст заявки вручную (он также выведен в консоль браузера).");
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(text);
+
+    form.reset();
+  });
+}
+
+function showToast(el, message) {
+  el.hidden = false;
+  el.textContent = message;
+  window.clearTimeout(showToast._t);
+  showToast._t = window.setTimeout(() => {
+    el.hidden = true;
+  }, 4200);
+}
+showToast._t = 0;
+
+function setupYear() {
+  const y = document.querySelector("#year");
+  if (y) y.textContent = String(new Date().getFullYear());
+}
+
+setupTabs();
+setupMenu();
+setupForm();
+setupYear();
+
+
+    </script>
+  </body>
+</html>
